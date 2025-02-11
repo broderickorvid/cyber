@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phishing Awareness</title>
+    <title>Plagiarism Report - Immediate Action Required</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -24,33 +24,36 @@
             font-size: 18px;
             font-weight: bold;
         }
-        .link-button {
+        .fake-link {
             display: inline-block;
-            background-color: red;
-            color: white;
-            padding: 10px 20px;
-            margin: 20px 0;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 16px;
+            color: blue;
+            text-decoration: underline;
             cursor: pointer;
+            font-size: 18px;
+            margin: 20px 0;
         }
-        .link-button:hover {
-            background-color: darkred;
+        .fake-link:hover {
+            color: darkblue;
+        }
+        .hidden {
+            display: none;
         }
         .counter {
             margin-top: 20px;
             font-size: 18px;
             font-weight: bold;
+            color: red;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <p class="warning">⚠️ ALERT: You Just Clicked a Phishing Link! ⚠️</p>
-        <p>This is how hackers trick people into giving away their personal data. Be cautious of unexpected messages and links!</p>
-        <button class="link-button" onclick="trackClick()">I Understand</button>
-        <p class="counter">Number of Clicks: <span id="clickCount">0</span></p>
+        <p class="warning">⚠️ URGENT: Plagiarism Alert on Your Final Project Submission ⚠️</p>
+        <p>Hey [Student Name],</p>
+        <p>Our system has detected <strong>potential plagiarism</strong> in your final project submission. Immediate action is required to avoid academic penalties.</p>
+        <p><span class="fake-link" onclick="trackClick()">📄 Click here to view your plagiarism report</span></p>
+        
+        <p class="hidden counter" id="clickCounter">⚠️ You have clicked a phishing link! Number of clicks: <span id="clickCount">0</span></p>
     </div>
 
     <script>
@@ -63,6 +66,7 @@
             count++;
             localStorage.setItem("clickCount", count);
             document.getElementById("clickCount").textContent = count;
+            document.getElementById("clickCounter").classList.remove("hidden");
         }
     </script>
 </body>
