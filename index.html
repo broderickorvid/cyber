@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plagiarism Alert - Immediate Action Required</title>
+    <title>Phishing Awareness</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -33,30 +33,36 @@
             text-decoration: none;
             border-radius: 5px;
             font-size: 16px;
+            cursor: pointer;
         }
         .link-button:hover {
             background-color: darkred;
         }
-        .reveal {
-            display: none;
-            color: green;
-            font-weight: bold;
+        .counter {
             margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <p class="warning">⚠️ URGENT: Plagiarism Alert on Your Final Project Submission ⚠️</p>
-        <p>Hey [Student Name],</p>
-        <p>Our system has detected <strong>potential plagiarism</strong> in your final project submission. Immediate action is required to avoid academic penalties.</p>
-        <p>Please review the report and respond as soon as possible.</p>
-        <a href="#" class="link-button" onclick="revealMessage(); return false;">View Your Plagiarism Report</a>
-        <p class="reveal" id="reveal">🚨 You just clicked a phishing link! This is how scammers trick people with fake urgency. Never trust unexpected messages like this! 🚨</p>
+        <p class="warning">⚠️ ALERT: You Just Clicked a Phishing Link! ⚠️</p>
+        <p>This is how hackers trick people into giving away their personal data. Be cautious of unexpected messages and links!</p>
+        <button class="link-button" onclick="trackClick()">I Understand</button>
+        <p class="counter">Number of Clicks: <span id="clickCount">0</span></p>
     </div>
+
     <script>
-        function revealMessage() {
-            document.getElementById("reveal").style.display = "block";
+        // Load click count from local storage
+        let count = localStorage.getItem("clickCount") || 0;
+        document.getElementById("clickCount").textContent = count;
+
+        function trackClick() {
+            alert("⚠️ You just clicked a phishing link! Be more cautious next time.");
+            count++;
+            localStorage.setItem("clickCount", count);
+            document.getElementById("clickCount").textContent = count;
         }
     </script>
 </body>
